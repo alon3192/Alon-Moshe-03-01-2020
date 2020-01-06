@@ -28,7 +28,7 @@ export class DataService {
   convertEmitter = new Subject<boolean>();
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
-  cMode = true;
+  cMode = true; 
   myKey = "XoOAP9HykswokQi7hrZyY6cxBmA7vPS7";
   locationDecision:boolean = false;
   updateFavoriteListEmitter = new Subject<any>()
