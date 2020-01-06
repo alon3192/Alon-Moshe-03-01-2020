@@ -1,0 +1,5 @@
+<div class="backdrop" [ngClass]="{ disapper_backdrop: isPressed}"></div>
+<div class="alert-box" [ngClass]="{ disapper_alert_box: isPressed}">
+  <p>{{ message }}</p>
+  <button (click)="buttonPressed()">Ok</button>
+</div>

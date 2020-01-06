@@ -1,0 +1,15 @@
+.favorites {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10%;
+    padding-right: 10%;
+    justify-content: space-evenly;
+}
+
+
+
+@media(max-width : 625px) {
+    .favorites {
+      flex-direction: column;      
+    }
+}

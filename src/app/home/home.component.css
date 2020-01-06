@@ -1,0 +1,89 @@
+
+.home {
+    margin-top: 15px;
+    text-align: center;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.div_input {
+    position: relative;
+}
+
+.home input {
+    margin-bottom: 10px;
+    height: 30px;
+    font-family: 'Courier Prime', monospace;
+    font-weight: bold; 
+    padding: 3px 15px;  
+}
+
+.div_img {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: calc(50% + 57px);
+    top: 3px;
+    cursor: pointer;
+}
+.div_img img {
+    height: 100%;
+    width: 100%;
+}
+
+.results {
+    border: black 1px solid;
+    position: fixed;
+    z-index: 2;
+    width: 80%;
+    height: auto;
+    max-height: 80%;
+    
+    overflow-y: scroll;
+}
+
+.display_city_name {
+    padding: 7px;
+    background: rgb(240, 240, 240);
+    cursor: pointer;
+}
+.display_city_name:hover {
+    background: rgb(210, 210, 210);
+}
+
+.cityDetails {
+    
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.daily_forecasts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img_div_animation {
+    animation-name: disappear;
+    animation-duration: 1s;
+}
+
+
+
+@keyframes disappear {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media(max-width : 1030px) {
+    .daily_forecasts {
+        display: block;    
+    }
+}
+
+@media(max-width : 700px) {
+    .cityDetails {
+        padding-right: 2%;
+        padding-left: 2%;
+    }
+}

@@ -1,0 +1,33 @@
+.header {
+    background: silver;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.options {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    list-style: none;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+}
+
+.options li {
+    margin-left: 20px;
+   
+}
+
+.options li a {
+    text-decoration: none;
+    color:white;
+}
+
+.options li a:hover {
+    color: black;
+    text-decoration: underline;
+}

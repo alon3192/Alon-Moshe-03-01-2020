@@ -1,0 +1,23 @@
+
+<div class="details">
+    <div class="div_flex">
+        <div class="card">
+            <div class="div_img">
+                <img src={{imageLink}} alt="">
+            </div>
+        </div> 
+        <div class="sub_details">
+            <h2 class="city_name">{{cityName}}</h2>
+            <h2 *ngIf="cMode" class="temperature">{{temperatureC}}&#176;c</h2>
+            <h2 *ngIf="!cMode" class="temperature">{{temperatureF}}&#176;f</h2>
+        </div>
+        
+    </div>
+    <div class="buttons">
+        <button (click)="favoriteButtonClicked()" class="fav_btn">{{isFavoriteText}} Your Favorites</button>
+        <button (click)="convertDeg()" class="fav_btn">Convert To {{toConvert}}</button>
+    </div>
+    <h1 class="responsive_weather_text">{{weatherText}}</h1>
+</div>
+ <h1 class="weather_text">{{weatherText}}</h1>
+

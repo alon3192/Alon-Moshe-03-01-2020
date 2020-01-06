@@ -1,0 +1,23 @@
+
+<div class="home">
+    <div class="div_input">
+        <input id="input" type="text" [(ngModel)]="cityName" placeholder="Type city" (input)="onChangeCityName()">
+        <div class="div_img" (click)="searchClicked()">
+            <img src="../../assets/images/search.png" alt="">
+        </div>
+    </div>
+    <div *ngIf="displayResults" class="results">
+        <div class="display_city_name" *ngFor="let cityName of tmpCities" (click)="cityChosed(cityName.EnglishName)">
+            {{cityName.EnglishName}}</div>
+    </div> 
+</div>
+<div class="cityDetails">
+    <app-city-detail [key]="cityKey" [cityName]="cityNameToSend"></app-city-detail>
+
+    <div id="daily_forecasts" class="daily_forecasts">
+        <app-daily-forecast *ngFor="let day of dailyForecasts" [dailyForecast]="day"></app-daily-forecast>  
+    </div>
+</div>
+
+<app-location-toast *ngIf="!locationDecision"></app-location-toast>
+<app-error-toast [message]="errorString" *ngIf="errorString !== null"></app-error-toast>

@@ -1,0 +1,110 @@
+.card {
+    width: 150px;
+    height: 200px;
+    border: black 1px solid;
+    margin-left: 10px;
+    text-align: center;
+    box-shadow: 6px 8px #888888;
+    animation-name: in_card;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    position: relative;
+    opacity: 1;
+}
+.card:hover {
+    background: rgb(220, 220, 220);
+}
+
+
+.temperature {
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 7px;
+}
+
+.card .icon_phrase {
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.div_img {
+    width: 65px;
+    height: 65px;
+    display: inline-block;
+}
+
+.div_img:hover {
+    animation-name: increase_size;
+    animation-duration: 0.7s
+}
+
+.div_img img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+@media(max-width : 1030px) {
+    .card {
+        width: 80%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        height: 250px;
+        margin-left:10%;
+        animation-name: in_card_responsive;
+    }
+    .day {
+        font-size: 23px;
+        margin: 12px;
+    }
+    .temperature {
+        font-size: 18px;
+    }
+    .icon_phrase {
+        font-size: 18px;
+    }
+    .div_img {
+        width: 120px;
+        height: 120px;
+    }
+    .card .icon_phrase {
+        margin-bottom: 8px;
+    }
+
+}
+
+
+@keyframes in_card {
+    
+    from { 
+            top: -1700px; }
+     to {
+         top: 0;
+     }           
+}
+
+@keyframes in_card_responsive {
+    
+    from { 
+            left: -1700px; }
+     to {
+         left: 0;
+     }           
+}
+
+@keyframes increase_size {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        
+    }
+    100% {
+        transform: scale(1);
+    }   
+}
+
+

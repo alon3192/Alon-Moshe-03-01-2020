@@ -1,0 +1,9 @@
+<div  id="card1" class="card">
+    <h2 class="day">{{day}}</h2>
+    <h4 class="temperature" *ngIf="cMode">{{degC}}&#176;c</h4>
+    <h4 class="temperature" *ngIf="!cMode">{{degF}}&#176;f</h4>
+    <h6 class="icon_phrase">{{dailyForecast.iconPhrase}}</h6>
+    <div class="div_img">
+        <img src="{{imageLink}}" alt="">
+    </div>
+</div>

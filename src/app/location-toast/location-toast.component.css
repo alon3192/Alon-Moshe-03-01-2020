@@ -1,0 +1,35 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 50;
+  }
+  
+  .alert-box {
+    position: fixed;
+    top: 80px;
+    left: 10%;
+    width: 80%;
+    height: 240px;
+    padding: 16px;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 2px 8px rbga(0, 0, 0, 0.26);
+    text-align: center;
+    font-size: 30px;
+  }
+  
+ .img_div {
+     width:140px;
+     height: 130px;
+     display: inline-block;
+ }
+ 
+ .img_div img {
+     width: 100%;
+     height: 100%;
+ }
+
