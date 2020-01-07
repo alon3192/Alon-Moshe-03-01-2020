@@ -5,14 +5,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class DataService {  
 
-  
+  /*The data management file. All shared information and communication between components goes through this file*/
 
-  constructor(private http:HttpClient) { 
-
-    
-  }
+  constructor(private http:HttpClient) { }
 
   link = new Subject<string>();
   citiesEmmiter = new Subject<any>()
@@ -25,26 +22,19 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "8nE8A8hCmNIRTWqS4ke7mp62s3fDzM0C";
+  myKey = "i12rWu7zpZonL7cVQGz7spAu232nliD1";
   locationDecision:boolean = false;
   updateFavoriteListEmitter = new Subject<any>()
-  
-
   fromFavorites:boolean = false;
- 
-
-
- 
-
-  citiesData; /*= */
-    
+  citiesData;
   
-
+    
   linkPressed(link:string)
   {
-    this.link.next(link);
+    this.link.next(link);   /*Which page indicator*/
   }
-  getCities()
+
+  getCities()  /*List of all the cities information*/
   {
     this.http.get('http://dataservice.accuweather.com/locations/v1/topcities/150?apikey=' + this.myKey)
     .subscribe(cities => {
@@ -53,13 +43,9 @@ export class DataService {
     })
    
   }
-  passKeyToMain(key:string, name:string)
-  {
-    
-    this.getCutrrentWeather(key) 
-  }
 
-  getCutrrentWeather(key:string)
+
+  getCurrentWeather(key:string)
   {
      this.http.get('http://dataservice.accuweather.com/currentconditions/v1/' + key + '?apikey=' + this.myKey)
     .subscribe(city => {
@@ -69,12 +55,11 @@ export class DataService {
 
   
 
-  updateFavoriteList()
+  updateFavoriteList()   /*Updates your favorite cities when clicking on the Favorites page (refetch)*/
   {
-    
     for(let i=0 ; i<this.favorites.length ; i++)
     {
-      this.getCutrrentWeather(this.favorites[i].key)
+      this.getCurrentWeather(this.favorites[i].key)
     }
   }
   
@@ -94,7 +79,7 @@ export class DataService {
 
   getLocationKey()
   {
-    if(!this.fromFavorites)
+    if(!this.fromFavorites)  /*Activated once in the first load if the user allows access to his location*/
     {
         const http = this.http;
         const key =this.myKey;
@@ -112,15 +97,14 @@ export class DataService {
       }
 
         function error() {
-          currentLocationEmitter.next( {Key: 215854, EnglishName:"Tel Aviv"});
+          currentLocationEmitter.next( {Key: 215854, EnglishName: "Tel Aviv"});
       }
-    
+      /*In the case of a location permission failure or deny, the information about Tel Aviv is transmitted*/
       if (!navigator.geolocation) {
-        currentLocationEmitter.next( {Key: 215854, EnglishName:"Tel Aviv"});
+        currentLocationEmitter.next( {Key: 215854, EnglishName: "Tel Aviv"});
       } else {
         navigator.geolocation.getCurrentPosition(success, error);
       }
-
     }  
     
   }
@@ -161,7 +145,7 @@ export class DataService {
     this.displayToastEmitter.next(mode);
   }
 
-  pickImage(dailyForecast)
+  pickImage(dailyForecast)  /*Get a link to the image according to the weather text*/
   {
     let imageLink;
     if(dailyForecast.includes("Snow".toLowerCase())) {

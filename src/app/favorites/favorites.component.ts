@@ -14,7 +14,7 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.dataService.linkPressed("favorites");
+    this.dataService.linkPressed("favorites");  /* Favorites page indicator */
     this.favirites = this.dataService.favorites;
    
   }

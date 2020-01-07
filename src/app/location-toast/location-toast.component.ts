@@ -9,7 +9,7 @@ export class LocationToastComponent implements OnInit {
 
   constructor() { }
 
-  message = "You have to decide wether you want to allow access to your current location";
+  message = "You have to decide wether you want to allow access to your current location.";
 
   ngOnInit() {
   }

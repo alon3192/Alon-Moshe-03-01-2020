@@ -26,24 +26,29 @@ export class DailyForecastComponent implements OnInit, OnDestroy {
 
     this.cMode = this.dataService.cMode;
 
-    this.subscription = this.dataService.convertEmitter.subscribe(
+    this.subscription = this.dataService.convertEmitter.subscribe(  /*Activated by clicking on the Convert button*/
       cMode => {
         this.cMode = cMode;    
       }  
     )
     
-
-    this.card = document.getElementById("card1");
     var date = new Date(+(this.dailyForecast.epochDate)*1000);
-    this.day = this.days[date.getDay()]
+    this.day = this.days[date.getDay()]                              /*Find the day of the week*/ 
 
-    this.degF = (+this.dailyForecast.maximumDeg + +this.dailyForecast.minimumDeg) /2;
-    this.degC = ((this.degF - 32) *5/9).toFixed(1); 
     
+    this.degF = this.getFarenheit(+this.dailyForecast.maximumDeg, +this.dailyForecast.minimumDeg);
+    this.degC = this.getCelsius(this.degF);
     this.imageLink = this.dataService.pickImage(this.dailyForecast.iconPhrase.toLowerCase())
 
-    
+  }
 
+  getFarenheit(max:number, min:number)
+  {
+    return (max + min) / 2;
+  }
+  getCelsius(degree:number)
+  {
+    return ((degree - 32) * 5 / 9).toFixed(1); 
   }
 
   ngOnDestroy() {

@@ -21,7 +21,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   temperatureC;
   temperatureF:number;
   public cMode = true;
-  weatherText = "Add To";
+  weatherText = "";
   isFavoriteText;
   isFavorite;
   toConvert = "Farenheit"
@@ -29,11 +29,10 @@ export class CityDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.subscription = this.dataService.isFavoriteEmmiter.subscribe(
+    this.subscription = this.dataService.isFavoriteEmmiter.subscribe(   /*Indicates whether the page is set as a favorite*/
       isFav => {
         this.isFavorite = isFav;
         
-
         if(isFav) {
           
           this.isFavoriteText = "Remove From";
@@ -52,11 +51,11 @@ export class CityDetailComponent implements OnInit, OnDestroy {
         this.weatherText = city[0].WeatherText;
         this.imageLink = this.dataService.pickImage(this.weatherText.toLowerCase())
 
-        this.temperatureF = +(this.temperatureC*9/5 + 32).toFixed(1);
+        this.temperatureF = +(this.getFarenheit(this.temperatureC));  /*Convert to Ferenheit*/ 
       }  
     )
 
-    this.subscription = this.dataService.convertEmitter.subscribe(
+    this.subscription = this.dataService.convertEmitter.subscribe(   /*Responsible for displaying degrees in Fahrenheit or Celsius*/
       cMode => {
         this.cMode = cMode;
         if(this.cMode) {
@@ -81,9 +80,14 @@ export class CityDetailComponent implements OnInit, OnDestroy {
       this.dataService.addToFavoriteList(this.cityName, this.key, this.temperatureC, this.weatherText, this.imageLink);
     }
   }
-  convertDeg()
+  convertDeg()  /*Activated by clicking on the Convert button*/ 
   {
     this.dataService.convertDeg(this.cMode);
+  }
+
+  getFarenheit(degree:number)
+  {
+    return (degree*9/5 + 32).toFixed(1);
   }
 
   ngOnDestroy() {

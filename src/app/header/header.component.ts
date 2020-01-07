@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
         if(id === "favorites")
         {
-          this.dataService.updateFavoriteList(); 
+          this.dataService.updateFavoriteList(); /*Updates your favorite cities when clicking on the Favorites page (refetch)*/
         }
         else
         {

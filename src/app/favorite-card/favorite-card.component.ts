@@ -21,16 +21,15 @@ export class FavoriteCardComponent implements OnInit {
   ngOnInit() {
 
    
-    this.dataService.getCutrrentWeather(this.favoriteCity.key);
+    this.dataService.getCurrentWeather(this.favoriteCity.key);
   }
 
   moveToTheMain()
   {
-    this.dataService.passKeyToMain(this.favoriteCity.key, this.favoriteCity.cityName);
+    
     this.dataService.fromFavorites = true;
-    
-    
     this.router.navigate([''], {queryParams:{'cityName' : this.favoriteCity.cityName, 'key':this.favoriteCity.key}})
+     /*Send the data to home page and move*/
 
   }
 

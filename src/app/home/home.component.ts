@@ -13,17 +13,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  cityName:string;
+  cityName:string; /*Input*/ 
   cities;
-  tmpCities
+  tmpCities  /*Contains the list of relevant cities in each user's typing*/ 
   private subscription:Subscription
   displayResults:boolean = false;
-  cityKey=""  /*"215854";   /*The default key = Tel Aviv*/
-  cityNameToSend; /*= "Tel Aviv"*/
-  dailyForecasts:DailyForecast[] = [];
-  locationDecision:boolean = true;
+  cityKey=""  
+  cityNameToSend;
+  dailyForecasts:DailyForecast[] = [];  /*The relevant data to present the 5 days forcast*/ 
+  locationDecision:boolean = true;     /*Responsible for displaying a location premission message*/ 
   errorString = null;
-  input;
+  
  
   
 
@@ -32,33 +32,29 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     
-        this.subscription = this.dataService.currentLocationEmitter.subscribe(
+        this.subscription = this.dataService.currentLocationEmitter.subscribe(    /*Current location request*/ 
           city => {
 
             this.dataService.locationDecision = true;
             this.cityKey = city.Key;
             this.cityNameToSend = city.EnglishName;
             this.dataService.isFavorite(this.cityNameToSend);
-            this.locationDecision = true;
-            this.dataService.getCutrrentWeather(this.cityKey);
+            this.locationDecision = true;                                  
+            this.dataService.getCurrentWeather(this.cityKey);
             this.dataService.getDailyForecasts(this.cityKey); 
           }
         )
     
     
     
-    this.subscription = this.dataService.citiesEmmiter.subscribe(
+    this.subscription = this.dataService.citiesEmmiter.subscribe(  /*Request to the List of all the cities*/
           cities => {
-            console.log("dffdsa")
             this.cities = cities;
             this.tmpCities = [...cities];
           }
         )
 
-    
-   
-
-    this.subscription = this.dataService.displayToastEmitter.subscribe(
+    this.subscription = this.dataService.displayToastEmitter.subscribe( /*Activated after the pressing the ok button on the input error message*/
           mode => {
             setTimeout(()=>{    
               this.errorString = null;
@@ -83,26 +79,27 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.dataService.getCities(); 
       this.locationDecision = this.dataService.locationDecision;
 
-      this.dataService.getLocationKey()
-      this.dataService.linkPressed("home");
+      this.dataService.getLocationKey();
+      this.dataService.linkPressed("home");   /* Home page indicator*/ 
       
 
-      this.cityNameToSend = this.route.snapshot.queryParams['cityName'];
-      this.cityKey = this.route.snapshot.queryParams['key']
+      this.cityNameToSend = this.route.snapshot.queryParams['cityName'];   /*Data from favorites page*/ 
+      this.cityKey = this.route.snapshot.queryParams['key'];                     /* " */ 
       
-      if(this.cityNameToSend !== undefined) {
+
+     
+
+      if(this.cityNameToSend !== undefined) {   /*Get the data from favorites page and build the home page*/ 
         this.dataService.isFavorite(this.cityNameToSend);
-        this.dataService.getCutrrentWeather(this.cityKey);
-        
+        this.dataService.getCurrentWeather(this.cityKey);
         this.dataService.getDailyForecasts(this.cityKey);
       }
 
   }
 
 
-  onChangeCityName()
-  {
-    
+  onChangeCityName()  /*Activated every input types*/
+  { 
     this.tmpCities = this.cities.filter(city => city.EnglishName.toUpperCase().includes(this.cityName.toUpperCase()));
     
     if(this.cityName === '' || this.tmpCities.length === 0)
@@ -122,7 +119,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  cityChosed(cityName:string)
+  cityChosed(cityName:string)  /*Activated when the user clicks on the one of the options from the list*/
   {
     this.cityName = cityName;
     this.displayResults = false;
@@ -130,7 +127,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     document.getElementsByTagName('input')[0].style.background = "rgb(189, 255, 189)";
   }
 
-  searchClicked()
+  searchClicked() /*Activated when the user presses the search button*/
   {
     this.errorString = this.dataService.handlerErrors(this.cityName)
     
@@ -139,7 +136,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.cityNameToSend = this.cityName;
       
         this.cityKey = this.tmpCities[0].Key;
-        this.dataService.getCutrrentWeather(this.cityKey);
+        this.dataService.getCurrentWeather(this.cityKey);
         
         this.dataService.isFavorite(this.cityNameToSend);
         this.dataService.getDailyForecasts(this.cityKey);
