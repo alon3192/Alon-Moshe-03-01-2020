@@ -5,7 +5,7 @@
     margin-left: 10px;
     text-align: center;
     box-shadow: 6px 8px #888888;
-    animation-name: in_card;
+    animation-name: getting_in_card;
     animation-duration: 1.5s;
     animation-timing-function: linear;
     position: relative;
@@ -53,7 +53,7 @@
         margin-bottom: 15px;
         height: 250px;
         margin-left:10%;
-        animation-name: in_card_responsive;
+        animation-name: getting_in_card;
     }
     .day {
         font-size: 23px;
@@ -76,16 +76,9 @@
 }
 
 
-@keyframes in_card {
-    
-    from { 
-            top: -1700px; }
-     to {
-         top: 0;
-     }           
-}
 
-@keyframes in_card_responsive {
+
+@keyframes getting_in_card {
     
     from { 
             left: -1700px; }

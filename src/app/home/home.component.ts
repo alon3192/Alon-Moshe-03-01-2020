@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     this.subscription = this.dataService.citiesEmmiter.subscribe(
           cities => {
+            console.log("dffdsa")
             this.cities = cities;
             this.tmpCities = [...cities];
           }
@@ -79,12 +80,12 @@ export class HomeComponent implements OnInit, OnDestroy {
             }   
           }
         )  
-
+      this.dataService.getCities(); 
       this.locationDecision = this.dataService.locationDecision;
 
       this.dataService.getLocationKey()
       this.dataService.linkPressed("home");
-      this.dataService.getCities(); 
+      
 
       this.cityNameToSend = this.route.snapshot.queryParams['cityName'];
       this.cityKey = this.route.snapshot.queryParams['key']
