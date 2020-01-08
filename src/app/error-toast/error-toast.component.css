@@ -56,6 +56,19 @@
     animation-delay: 0s;
     animation-fill-mode: forwards;
  } 
+
+ @media(max-width : 710px) {
+      .alert-box  {
+         font-size: 15px;
+         width: 96%;
+         left: 2%;
+         box-sizing: border-box;
+      }
+      .alert-box button {
+         width: 100%;
+         margin-left: 0;
+      }
+}
  
 
  @keyframes appear {

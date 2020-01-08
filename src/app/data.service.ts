@@ -67,11 +67,11 @@ export class DataService {
   {
     
     if(cityName === '' || cityName === null || cityName === undefined) {
-      return "You did not type any input, please try again";
+      return "You did not type any input, please try again.";
     }
     if(this.citiesData.filter(city => city.EnglishName.toUpperCase() === cityName.toUpperCase()).length !== 1) {
       
-      return "The input that you send does not exists in the repository";
+      return "The input that you send does not exists in the repository.";
     }
     return null;
   }
