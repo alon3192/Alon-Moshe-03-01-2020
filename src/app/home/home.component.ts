@@ -115,6 +115,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       if(this.dataService.handlerErrors(this.cityName) === null)
       {
         document.getElementsByTagName('input')[0].style.background = "rgb(189, 255, 189)";
+        this.displayResults = false;
       }
     }
   }

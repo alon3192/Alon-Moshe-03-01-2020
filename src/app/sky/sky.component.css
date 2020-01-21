@@ -1,0 +1,221 @@
+.sky {
+    height: 250px;
+    background: skyblue;
+    position: relative;
+    animation-name: changing_background;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    overflow: hidden;
+}
+
+#cloud1 {
+    position: absolute;
+    top: 5px;
+    left: 0%;
+    animation-name: moving_cloud1;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: 2;
+}
+
+#cloud2 {
+    position: absolute;
+    top: 5px;
+    right: 0%;
+    animation-name: moving_cloud2;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: 2;
+}
+
+.div_lighting1,
+.div_lighting2{
+    opacity: 0;
+    animation-name: show_lighting;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    overflow: hidden;
+    height: 240px;
+    width: 280px;
+}
+.div_lighting2 {
+    right: 0;
+}
+.div_lighting1 img,
+.div_lighting2 img {
+    height: 100%;
+    width: 100%;
+}
+
+.flex_div {
+    display: flex;
+    justify-content: center;
+    left:0;
+    right:0;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    animation-name: show_head;
+    animation-duration: 2s;
+}
+.title {
+    margin: 0;
+    margin-left: 8px;
+    margin-bottom: -3px;
+}
+
+
+
+@keyframes show_head {
+    from { right: -1500px; }
+    to { right: 0; }
+}
+
+@keyframes moving_cloud1 {
+    0% {
+        left: 0%;
+    }
+    40% {
+        left: calc(50% - 160px);
+    }
+    60% {
+        left: calc(50% - 160px);
+    }
+    100% {
+        left: 0%;
+    }   
+}
+@keyframes moving_cloud2 {
+    0% {
+        right: 0%;
+    }
+    40% {
+        right: calc(50% - 160px);
+    }
+    60% {
+        right: calc(50% - 160px);
+    }
+    100% {
+        right: 0%;
+    }
+}
+
+@keyframes show_lighting {
+    0% {
+        opacity: 0;
+    }
+    39% {
+        opacity: 0; 
+    } 
+    50% {
+        opacity: 1; 
+    }
+    65% {
+        opacity: 0; 
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes position_lighting {
+    0% {
+        top: -130px;
+    }
+    39% {
+        top: -130px; 
+    } 
+    50% {
+        top: 0px; 
+    }
+    65% {
+        top: 0px; 
+    }
+    100% {
+        top: 0px; 
+    }
+}
+
+@keyframes changing_background {
+    0% {
+        background: skyblue;
+    }
+    39% {
+        background: skyblue; 
+    } 
+    41% {
+        background: rgb(58, 130, 158); 
+    }
+    43% {
+        background: rgb(27, 108, 129); 
+    }
+    45% {
+        background: rgb(58, 130, 158); 
+    }
+    47% {
+        background: rgb(27, 108, 129); 
+    }
+    50% {
+        background: rgb(58, 130, 158); 
+    }
+    52% {
+        background: rgb(27, 108, 129); 
+    }
+    54% {
+        background: skyblue
+    }
+    56% {
+        background: rgb(58, 130, 158); 
+    }
+    58% {
+        background: rgb(58, 130, 158); 
+    }
+    60% {
+        background: rgb(27, 108, 129); 
+    }
+    62% {
+        background: rgb(58, 130, 158); 
+    }
+    65% {
+       background: skyblue; 
+    }
+    100% {
+        background: skyblue;
+    }
+}
+
+@media(max-width : 600px) {
+
+    .sky {
+        height: 200px;
+    }
+    #cloud1,#cloud2 {
+        width: 100px;
+    }
+    
+    .div_lighting1,
+    .div_lighting2 {
+        height: 180px;
+        width: 200px;
+    }
+    @keyframes moving_cloud1 {
+        40% {
+            left: calc(50% - 70px);
+        }
+        60% {
+            left: calc(50% - 70px);
+        }
+    }
+    @keyframes moving_cloud2  {
+        40% {
+            right: calc(50% - 70px);
+        }
+        60% {
+            right: calc(50% - 70px);
+        }
+    }
+
+}
