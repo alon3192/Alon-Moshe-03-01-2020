@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     
         this.subscription = this.dataService.currentLocationEmitter.subscribe(    /*Current location request*/ 
           city => {
-            console.log(city)
             if(typeof(city) === 'string') {
               this.errorString = city;
               this.locationDecision = false; 
@@ -89,8 +88,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                                         cityDailyForecasts.DailyForecasts[i].Temperature.Maximum.Value,
                                         cityDailyForecasts.DailyForecasts[i].Day.IconPhrase))
               } 
-            }
-              
+            }    
           }
         )
         this.subscription = this.dataService.errorStringEmitter.subscribe( 
@@ -116,9 +114,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.dataService.getCurrentWeather(this.cityKey);
         this.dataService.getDailyForecasts(this.cityKey);
       }
-
   }
-
 
   onChangeCityName()  /*Activated every input types*/
   { 
