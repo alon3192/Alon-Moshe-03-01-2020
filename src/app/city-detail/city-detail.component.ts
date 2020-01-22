@@ -46,12 +46,16 @@ export class CityDetailComponent implements OnInit, OnDestroy {
     
     this.subscription = this.dataService.cityDetailsEmitter.subscribe(
       city => {
-        this.cityObject = city;
-        this.temperatureC = city[0].Temperature.Metric.Value;
-        this.weatherText = city[0].WeatherText;
-        this.imageLink = this.dataService.pickImage(this.weatherText.toLowerCase())
-
-        this.temperatureF = +(this.getFarenheit(this.temperatureC));  /*Convert to Ferenheit*/ 
+        if(typeof(city) === 'string') {
+          
+        }
+        else {
+          this.cityObject = city;
+          this.temperatureC = city[0].Temperature.Metric.Value;
+          this.weatherText = city[0].WeatherText;
+          this.imageLink = this.dataService.pickImage(this.weatherText.toLowerCase())
+          this.temperatureF = +(this.getFarenheit(this.temperatureC));  /*Convert to Ferenheit*/ 
+        }   
       }  
     )
 

@@ -27,8 +27,12 @@ export class DataService {
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
   citiesData;
+  errorStringEmitter = new Subject<string>();
   
-    
+  setErrorString(str:string) {
+    this.errorStringEmitter.next(str);
+  }  
+
   linkPressed(link:string)
   {
     this.link.next(link);   /*Which page indicator*/
@@ -40,6 +44,8 @@ export class DataService {
     .subscribe(cities => {
       this.citiesData = cities;
        this.citiesEmmiter.next(this.citiesData);
+    }, error => {
+      this.citiesEmmiter.next("API Error");
     })
    
   }
@@ -50,6 +56,8 @@ export class DataService {
      this.http.get('http://dataservice.accuweather.com/currentconditions/v1/' + key + '?apikey=' + this.myKey)
     .subscribe(city => {
       this.cityDetailsEmitter.next(city); 
+    }, error => {
+      this.setErrorString("API Error");
     })
   }
 
@@ -93,7 +101,9 @@ export class DataService {
           http.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=' + key +'&q=' + latitude + '%2C' + longitude)
             .subscribe(city => {            
               currentLocationEmitter.next(city)
-          } )
+          }, error => {
+            this.currentLocationEmitter.next("API Error");
+          })
       }
 
         function error() {
@@ -132,6 +142,8 @@ export class DataService {
     this.http.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + key + '?apikey=' + this.myKey)
     .subscribe(city => {
       this.fiveDailyForecasts.next(city);   
+    }, error => {
+      this.fiveDailyForecasts.next("API Error");
     })
   }
   convertDeg(condition:boolean)

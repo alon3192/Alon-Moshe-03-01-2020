@@ -34,14 +34,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     
         this.subscription = this.dataService.currentLocationEmitter.subscribe(    /*Current location request*/ 
           city => {
-
-            this.dataService.locationDecision = true;
-            this.cityKey = city.Key;
-            this.cityNameToSend = city.EnglishName;
-            this.dataService.isFavorite(this.cityNameToSend);
-            this.locationDecision = true;                                  
-            this.dataService.getCurrentWeather(this.cityKey);
-            this.dataService.getDailyForecasts(this.cityKey); 
+            console.log(city)
+            if(typeof(city) === 'string') {
+              this.errorString = city;
+              this.locationDecision = false; 
+            }
+            else {
+              this.dataService.locationDecision = true;
+              this.cityKey = city.Key;
+              this.cityNameToSend = city.EnglishName;
+              this.dataService.isFavorite(this.cityNameToSend);
+              this.locationDecision = true;                                  
+              this.dataService.getCurrentWeather(this.cityKey);
+              this.dataService.getDailyForecasts(this.cityKey);
+            }  
           }
         )
     
@@ -49,8 +55,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     this.subscription = this.dataService.citiesEmmiter.subscribe(  /*Request to the List of all the cities*/
           cities => {
-            this.cities = cities;
-            this.tmpCities = [...cities];
+            if(typeof(cities) === 'string') {
+              this.errorString = cities;
+            }
+            else {
+              this.cities = cities;
+              this.tmpCities = [...cities];
+            }
+            
           }
         )
 
@@ -64,16 +76,26 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.subscription = this.dataService.fiveDailyForecasts.subscribe(
           cityDailyForecasts => {
-            
-            this.dailyForecasts = [];
-            
-            for(let i=0 ; i<cityDailyForecasts.DailyForecasts.length ; i++)
-            {
-              this.dailyForecasts.push(new DailyForecast(cityDailyForecasts.DailyForecasts[i].EpochDate,
-                                       cityDailyForecasts.DailyForecasts[i].Temperature.Minimum.Value,
-                                       cityDailyForecasts.DailyForecasts[i].Temperature.Maximum.Value,
-                                       cityDailyForecasts.DailyForecasts[i].Day.IconPhrase))
-            }   
+            if(typeof(cityDailyForecasts) === 'string') {
+              this.errorString = cityDailyForecasts;
+            }
+            else {
+                this.dailyForecasts = [];
+              
+              for(let i=0 ; i<cityDailyForecasts.DailyForecasts.length ; i++)
+              {
+                this.dailyForecasts.push(new DailyForecast(cityDailyForecasts.DailyForecasts[i].EpochDate,
+                                        cityDailyForecasts.DailyForecasts[i].Temperature.Minimum.Value,
+                                        cityDailyForecasts.DailyForecasts[i].Temperature.Maximum.Value,
+                                        cityDailyForecasts.DailyForecasts[i].Day.IconPhrase))
+              } 
+            }
+              
+          }
+        )
+        this.subscription = this.dataService.errorStringEmitter.subscribe( 
+          str => {
+            this.errorString = str;
           }
         )  
       this.dataService.getCities(); 
