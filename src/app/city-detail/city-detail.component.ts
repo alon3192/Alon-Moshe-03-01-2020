@@ -107,7 +107,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
     else if(this.imageLink.includes("cloudy")) {
       this.backgroundImage = "../../assets/images/cloudy-image.jpg";
     }
-    else if(this.imageLink.includes("sunny")) {
+    else if(this.imageLink.includes("sunny") || this.imageLink.includes("clear")) {
       this.backgroundImage = "../../assets/images/sunny-image.jpg";
     }
     else if(this.imageLink.includes("mostly_sunny")) {

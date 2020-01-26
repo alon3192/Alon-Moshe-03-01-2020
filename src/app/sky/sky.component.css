@@ -190,10 +190,11 @@
 @media(max-width : 600px) {
 
     .sky {
-        height: 200px;
+        height: 150px;
     }
     #cloud1,#cloud2 {
         width: 100px;
+        top: 15px;
     }
     
     .div_lighting1,
