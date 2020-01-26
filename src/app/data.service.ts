@@ -186,7 +186,7 @@ export class DataService {
           imageLink = "../../assets/images/clear.png";
       } 
       else if(dailyForecast.toLowerCase().includes("Mist".toLowerCase()) || dailyForecast.toLowerCase().includes
-      ("Fog".toLowerCase())) {
+      ("Fog".toLowerCase()) || dailyForecast.toLowerCase().includes("Hazy".toLowerCase())) {
           imageLink = "../../assets/images/mist.png";
       }
       else {

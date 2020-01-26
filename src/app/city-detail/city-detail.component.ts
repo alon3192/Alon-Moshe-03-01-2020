@@ -9,10 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class CityDetailComponent implements OnInit, OnDestroy {
 
-  constructor(private dataService:DataService) { 
-
-    
-  }
+  constructor(private dataService:DataService) { }
 
   private subscription:Subscription
   @Input() key;
@@ -26,6 +23,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   isFavorite;
   toConvert = "Farenheit"
   imageLink;
+  backgroundImage:string = "../../assets/images/rain-image.jpg";
 
   ngOnInit() {
 
@@ -55,6 +53,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
           this.weatherText = city[0].WeatherText;
           this.imageLink = this.dataService.pickImage(this.weatherText.toLowerCase())
           this.temperatureF = +(this.getFarenheit(this.temperatureC));  /*Convert to Ferenheit*/ 
+          this.setBackgroundImage();
         }   
       }  
     )
@@ -70,7 +69,6 @@ export class CityDetailComponent implements OnInit, OnDestroy {
       }  
     )
     this.dataService.isFavorite(this.cityName);
- 
   }
 
   favoriteButtonClicked()
@@ -92,6 +90,35 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   getFarenheit(degree:number)
   {
     return (degree*9/5 + 32).toFixed(1);
+  }
+
+  getBackground()
+  {
+    return this.backgroundImage;
+  }
+
+ setBackgroundImage() {
+    if(this.imageLink.includes("snow")) {
+      this.backgroundImage = "../../assets/images/snow-image.jpg";
+    }
+    else if(this.imageLink.includes("rain")) {
+      this.backgroundImage = "../../assets/images/rain-image.jpg";
+    }
+    else if(this.imageLink.includes("cloudy")) {
+      this.backgroundImage = "../../assets/images/cloudy-image.jpg";
+    }
+    else if(this.imageLink.includes("sunny")) {
+      this.backgroundImage = "../../assets/images/sunny-image.jpg";
+    }
+    else if(this.imageLink.includes("mostly_sunny")) {
+      this.backgroundImage = "../../assets/images/mostly-sunny-image.jpg";
+    }
+    else if(this.imageLink.includes("thunderstorm")) {
+      this.backgroundImage = "../../assets/images/thunderstorm-image.jpg";
+    }
+    else if(this.imageLink.includes("mist")) {
+      this.backgroundImage = "../../assets/images/mist-image.jpg";
+    }
   }
 
   ngOnDestroy() {

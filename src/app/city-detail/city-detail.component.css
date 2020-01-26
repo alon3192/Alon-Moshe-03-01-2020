@@ -91,6 +91,19 @@
     display: none;
 }
 
+.general {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
 @media(max-width : 740px) {
     .details {
         flex-direction: column; 
