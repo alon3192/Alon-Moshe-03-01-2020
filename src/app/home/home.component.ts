@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   cityKey=""  
   cityNameToSend;
   dailyForecasts:DailyForecast[] = [];  /*The relevant data to present the 5 days forcast*/ 
-  locationDecision:boolean = true;     /*Responsible for displaying a location premission message*/ 
+  locationDecision:boolean = false;     /*Responsible for displaying a location premission message*/ 
   errorString = null;
   
  
@@ -36,10 +36,10 @@ export class HomeComponent implements OnInit, OnDestroy {
           city => {
             if(typeof(city) === 'string') {
               this.errorString = city;
-              this.locationDecision = false; 
+              this.locationDecision = true; 
             }
             else {
-              this.dataService.locationDecision = true;
+              this.locationDecision = true;
               this.cityKey = city.Key;
               this.cityNameToSend = city.EnglishName;
               this.dataService.isFavorite(this.cityNameToSend);
@@ -49,10 +49,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             }  
           }
         )
-    
-    
-    
-    this.subscription = this.dataService.citiesEmmiter.subscribe(  /*Request to the List of all the cities*/
+       
+      this.subscription = this.dataService.citiesEmmiter.subscribe(  /*Request to the List of all the cities*/
           cities => {
             if(typeof(cities) === 'string') {
               this.errorString = cities;
@@ -60,8 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             else {
               this.cities = cities;
               this.tmpCities = [...cities];
-            }
-            
+            } 
           }
         )
 
@@ -95,19 +92,20 @@ export class HomeComponent implements OnInit, OnDestroy {
           str => {
             this.errorString = str;
           }
-        )  
+        ) 
+        this.subscription = this.dataService.locationDecisionEmmiter.subscribe( 
+          decision => {
+            this.locationDecision = decision;
+          }
+        ) 
       this.dataService.getCities(); 
-      this.locationDecision = this.dataService.locationDecision;
-
+    
       this.dataService.getLocationKey();
       this.dataService.linkPressed("home");   /* Home page indicator*/ 
-      
 
       this.cityNameToSend = this.route.snapshot.queryParams['cityName'];   /*Data from favorites page*/ 
       this.cityKey = this.route.snapshot.queryParams['key'];                     /* " */ 
       
-
-     
 
       if(this.cityNameToSend !== undefined) {   /*Get the data from favorites page and build the home page*/ 
         this.dataService.isFavorite(this.cityNameToSend);
@@ -149,19 +147,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   searchClicked() /*Activated when the user presses the search button*/
   {
     this.errorString = this.dataService.handlerErrors(this.cityName)
-    
     if(this.errorString === null) {
-      
         this.cityNameToSend = this.cityName;
-      
         this.cityKey = this.tmpCities[0].Key;
         this.dataService.getCurrentWeather(this.cityKey);
-        
         this.dataService.isFavorite(this.cityNameToSend);
-        this.dataService.getDailyForecasts(this.cityKey);
-      
-    }
-    
+        this.dataService.getDailyForecasts(this.cityKey); 
+    } 
   }
 
   ngOnDestroy() {
