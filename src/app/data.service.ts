@@ -170,7 +170,7 @@ export class DataService {
   pickImage(dailyForecast)  /*Get a link to the image according to the weather text*/
   {
     let imageLink;
-    if(dailyForecast.includes("Snow".toLowerCase())) {
+    if(dailyForecast.includes("Snow".toLowerCase()) || dailyForecast.includes("Flurries".toLowerCase())) {
       imageLink = "../../assets/images/snowing.png";
         }
       else if(dailyForecast.includes("Shower".toLowerCase()) || dailyForecast.includes("Rain".toLowerCase())) {
