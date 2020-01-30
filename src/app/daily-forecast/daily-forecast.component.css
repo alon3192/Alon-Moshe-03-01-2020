@@ -53,7 +53,6 @@
         margin-bottom: 15px;
         height: 250px;
         margin-left:10%;
-        animation-name: getting_in_card;
     }
     .day {
         font-size: 23px;
@@ -92,8 +91,7 @@
         transform: scale(1);
     }
     50% {
-        transform: scale(1.2);
-        
+        transform: scale(1.2);     
     }
     100% {
         transform: scale(1);

@@ -24,6 +24,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   toConvert = "Farenheit"
   imageLink;
   backgroundImage:string = "../../assets/images/rain-image.jpg";
+  card;
 
   ngOnInit() {
 
@@ -54,6 +55,18 @@ export class CityDetailComponent implements OnInit, OnDestroy {
           this.imageLink = this.dataService.pickImage(this.weatherText.toLowerCase())
           this.temperatureF = +(this.getFarenheit(this.temperatureC));  /*Convert to Ferenheit*/ 
           this.setBackgroundImage();
+          this.card = document.getElementById("div_flex");
+          this.card.classList.add("card_animation");
+          document.getElementById("responsive_weather_text").classList.add("card_animation");
+          document.getElementById("weather_text").classList.add("card_animation");
+          
+          setTimeout(()=>{    
+            this.card.classList.remove("card_animation");
+            document.getElementById("responsive_weather_text").classList.remove("card_animation");
+            document.getElementById("weather_text").classList.remove("card_animation");
+           
+          }, 1501); 
+          
         }   
       }  
     )
@@ -69,6 +82,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
       }  
     )
     this.dataService.isFavorite(this.cityName);
+    
   }
 
   favoriteButtonClicked()

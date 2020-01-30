@@ -20,6 +20,13 @@
     background: rgb(220, 220, 220);
 }
 
+.card_animation {
+    animation-name: show_in;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    position: relative;
+}
+
 .div_img {
     width: 160px;
     height: 160px;
@@ -164,4 +171,15 @@
     100% {
         transform: scale(1);
     }   
+}
+
+@keyframes show_in {
+    
+    from { 
+            top: -200px;
+            opacity: 0; }
+     to {
+         top: 0;
+         opacity: 1;
+     }           
 }
