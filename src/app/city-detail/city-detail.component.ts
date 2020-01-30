@@ -64,7 +64,6 @@ export class CityDetailComponent implements OnInit, OnDestroy {
             this.card.classList.remove("card_animation");
             document.getElementById("responsive_weather_text").classList.remove("card_animation");
             document.getElementById("weather_text").classList.remove("card_animation");
-           
           }, 1501); 
           
         }   
@@ -130,7 +129,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
     else if(this.imageLink.includes("thunderstorm")) {
       this.backgroundImage = "../../assets/images/thunderstorm-image.jpg";
     }
-    else if(this.imageLink.includes("mist")) {
+    else if(this.imageLink.includes("mist") || this.imageLink.includes("hazy") || this.imageLink.includes("foggy")) {
       this.backgroundImage = "../../assets/images/mist-image.jpg";
     }
   }

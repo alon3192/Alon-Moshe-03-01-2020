@@ -111,6 +111,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.dataService.isFavorite(this.cityNameToSend);
         this.dataService.getCurrentWeather(this.cityKey);
         this.dataService.getDailyForecasts(this.cityKey);
+        this.locationDecision = true;
       }
   }
 
