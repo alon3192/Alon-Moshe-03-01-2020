@@ -1,6 +1,6 @@
 
 <div class="details">
-    <div id="div_flex" class="div_flex">
+    <div class="div_flex" id="div_flex">
         <div class="card">
             <div class="div_img">
                 <img src={{imageLink}} alt="">
@@ -14,12 +14,12 @@
         
     </div>
     <div class="buttons">
-        <button (click)="favoriteButtonClicked()" class="fav_btn">{{isFavoriteText}} Your Favorites</button>
-        <button (click)="convertDeg()" class="fav_btn">Convert To {{toConvert}}</button>
+        <button (click)="favoriteButtonClicked()" class="fav_btn" [disabled]="errorMode">{{isFavoriteText}} Your Favorites</button>
+        <button (click)="convertDeg()" class="fav_btn"  [disabled]="errorMode">Convert To {{toConvert}}</button>
     </div>
-    <h1 id="responsive_weather_text" class="responsive_weather_text">{{weatherText}}</h1>
+    <h1 class="responsive_weather_text" id="responsive_weather_text">{{weatherText}}</h1>
 </div>
- <h1 id="weather_text" class="weather_text">{{weatherText}}</h1>
+ <h1 class="weather_text" id="weather_text">{{weatherText}}</h1>
 
  <div [ngStyle]="{'background-image': 'url(' + getBackground() + ')'}" class="general"></div>
 

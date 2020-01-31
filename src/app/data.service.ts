@@ -22,13 +22,14 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "hczKKp1jKjsJAQgyAbTygWzMj5XPeekt";
+  myKey = "AJcewUNtL4yyDsUeAXrnZKuG4ANweNXo";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
   citiesData;
   errorStringEmitter = new Subject<string>();
   locationDecisionEmmiter = new Subject<boolean>();
+  imageErrorEmmiter = new Subject<string>();
   
   setErrorString(str:string) {
     this.errorStringEmitter.next(str);
@@ -46,9 +47,10 @@ export class DataService {
       this.citiesData = cities;
        this.citiesEmmiter.next(this.citiesData);
     }, error => {
-      console.log("1")
+      /*console.log("1")*/
       this.citiesEmmiter.next("API Error");
       this.locationDecisionEmmiter.next(true);
+      this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
    
   }
@@ -60,9 +62,10 @@ export class DataService {
     .subscribe(city => {
       this.cityDetailsEmitter.next(city); 
     }, error => {
-      console.log("2")
+      /*console.log("2")*/
       this.setErrorString("API Error");
       this.locationDecisionEmmiter.next(true);
+      this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
   }
 
@@ -98,6 +101,7 @@ export class DataService {
         const key =this.myKey;
         const currentLocationEmitter = this.currentLocationEmitter;
         const locationDecisionEmmiter = this.locationDecisionEmmiter
+        const imageErrorEmmiter = this.imageErrorEmmiter;
         
             function success(position) {
         
@@ -108,9 +112,10 @@ export class DataService {
             .subscribe(city => {            
               currentLocationEmitter.next(city)
           }, error => {
-            console.log("3")
+            /*console.log("3")*/
             currentLocationEmitter.next("API Error");
             locationDecisionEmmiter.next(true);
+            imageErrorEmmiter.next("../../assets/images/error.png");
           })
       }
 
@@ -151,9 +156,10 @@ export class DataService {
     .subscribe(city => {
       this.fiveDailyForecasts.next(city);   
     }, error => {
-      console.log("4")
+      /*console.log("4")*/
       this.fiveDailyForecasts.next("API Error");
       this.locationDecisionEmmiter.next(true);
+      this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
   }
   convertDeg(condition:boolean)

@@ -25,6 +25,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   imageLink;
   backgroundImage:string = "../../assets/images/rain-image.jpg";
   card;
+  errorMode:boolean = false;
 
   ngOnInit() {
 
@@ -42,11 +43,17 @@ export class CityDetailComponent implements OnInit, OnDestroy {
       }  
     )
 
+    this.subscription = this.dataService.imageErrorEmmiter.subscribe(  
+      img => {
+        this.imageLink = img;
+        this.errorMode = true;
+        console.log(this.errorMode)
+      }  
+    )
     
     this.subscription = this.dataService.cityDetailsEmitter.subscribe(
       city => {
-        if(typeof(city) === 'string') {
-          
+        if(typeof(city) === 'string') { 
         }
         else {
           this.cityObject = city;
@@ -56,15 +63,20 @@ export class CityDetailComponent implements OnInit, OnDestroy {
           this.temperatureF = +(this.getFarenheit(this.temperatureC));  /*Convert to Ferenheit*/ 
           this.setBackgroundImage();
           this.card = document.getElementById("div_flex");
-          this.card.classList.add("card_animation");
-          document.getElementById("responsive_weather_text").classList.add("card_animation");
-          document.getElementById("weather_text").classList.add("card_animation");
+          if(this.card !== null && document.getElementById("responsive_weather_text") !== null && document.getElementById("weather_text") !== null) {
+            this.card.classList.add("card_animation");
+            document.getElementById("responsive_weather_text").classList.add("card_animation");
+            document.getElementById("weather_text").classList.add("card_animation");
+          
+          
+          
           
           setTimeout(()=>{    
             this.card.classList.remove("card_animation");
             document.getElementById("responsive_weather_text").classList.remove("card_animation");
             document.getElementById("weather_text").classList.remove("card_animation");
           }, 1501); 
+        }
           
         }   
       }  
