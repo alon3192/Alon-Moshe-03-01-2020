@@ -8,8 +8,8 @@
         </div> 
         <div class="sub_details">
             <h2 class="city_name">{{cityName}}</h2>
-            <h2 *ngIf="cMode" class="temperature">{{temperatureC}}&#176;c</h2>
-            <h2 *ngIf="!cMode" class="temperature">{{temperatureF}}&#176;f</h2>
+            <h2 *ngIf="cMode && !errorMode" class="temperature">{{temperatureC}}&#176;c</h2>
+            <h2 *ngIf="!cMode && !errorMode" class="temperature">{{temperatureF}}&#176;f</h2>
         </div>
         
     </div>

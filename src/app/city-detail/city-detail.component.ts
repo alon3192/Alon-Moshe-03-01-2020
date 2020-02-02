@@ -23,7 +23,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   isFavorite;
   toConvert = "Farenheit"
   imageLink;
-  backgroundImage:string = "../../assets/images/rain-image.jpg";
+  backgroundImage:string="";
   card;
   errorMode:boolean = false;
 
@@ -47,7 +47,6 @@ export class CityDetailComponent implements OnInit, OnDestroy {
       img => {
         this.imageLink = img;
         this.errorMode = true;
-        console.log(this.errorMode)
       }  
     )
     
@@ -123,6 +122,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   }
 
  setBackgroundImage() {
+   console.log("fd")
     if(this.imageLink.includes("snow")) {
       this.backgroundImage = "../../assets/images/snow-image.jpg";
     }
@@ -144,6 +144,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
     else if(this.imageLink.includes("mist") || this.imageLink.includes("hazy") || this.imageLink.includes("foggy")) {
       this.backgroundImage = "../../assets/images/mist-image.jpg";
     }
+    
   }
 
   ngOnDestroy() {
