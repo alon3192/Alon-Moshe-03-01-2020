@@ -30,6 +30,18 @@
     animation-timing-function: linear;
     z-index: 2;
 }
+.rain {
+   background-image: url("../../assets/images/rain-animation.png");
+   height: 200px;
+   width: 100%;
+   display: block;
+   animation-name: its_raining;
+   animation-duration: 10s;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear;
+   position: absolute;
+
+}
 
 .div_lighting1,
 .div_lighting2{
@@ -68,7 +80,32 @@
     margin-bottom: -3px;
 }
 
-
+@keyframes its_raining {
+    0% {
+        
+        height: 0px;
+    }
+    39.99% {
+        height: 0px;
+    }
+    40% {
+        
+        height: 600px;
+        background-position: 0% 0%;
+    }
+    62% {
+        
+        height: 600px;
+        background-position: 13000% 600%;
+    }
+    62.01% {
+        height: 0;
+    }
+    100% {
+        
+        height: 0px;
+    } 
+}
 
 @keyframes show_head {
     from { right: -1500px; }
