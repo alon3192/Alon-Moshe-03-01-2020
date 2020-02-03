@@ -122,7 +122,6 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   }
 
  setBackgroundImage() {
-   console.log("fd")
     if(this.imageLink.includes("snow")) {
       this.backgroundImage = "../../assets/images/snow-image.jpg";
     }
