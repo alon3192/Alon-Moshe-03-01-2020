@@ -183,24 +183,17 @@ export class DataService {
         imageLink = "../../assets/images/rain.png";
       }
 
-      else if(dailyForecast.toLowerCase().includes("Mostly Cloudy".toLowerCase()) || dailyForecast.toLowerCase().includes
-      ("Cloud".toLowerCase()) || dailyForecast.toLowerCase().includes("Partly Cloudy".toLowerCase()) || dailyForecast.includes("Intermittent clouds".toLowerCase())) {
+      else if(dailyForecast.toLowerCase().includes("Cloud".toLowerCase())) {
         imageLink = "../../assets/images/cloudy.png";
       }
-      else if(dailyForecast.toLowerCase().includes("Partly Sunny".toLowerCase()) || dailyForecast.toLowerCase().includes
-      ("Sunny".toLowerCase())) {
+
+      else if(dailyForecast.toLowerCase().includes("Sunny".toLowerCase()) || dailyForecast.includes("Clear".toLowerCase())) {
           imageLink = "../../assets/images/sunny.png";
       }
-      else if(dailyForecast.includes("Mostly sunny".toLowerCase())) {
-        imageLink = "../../assets/images/mostly_sunny.png";
-      } 
-     
+       
       else if(dailyForecast.includes("Thunderstorm".toLowerCase())) {
           imageLink = "../../assets/images/thunderstorm.png";
       }
-      else if(dailyForecast.includes("Clear".toLowerCase())) {
-          imageLink = "../../assets/images/clear.png";
-      } 
       else if(dailyForecast.toLowerCase().includes("Mist".toLowerCase()) || dailyForecast.toLowerCase().includes
       ("Fog".toLowerCase()) || dailyForecast.toLowerCase().includes("Hazy".toLowerCase())) {
           imageLink = "../../assets/images/mist.png";
