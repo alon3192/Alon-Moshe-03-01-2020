@@ -37,8 +37,6 @@
     border: black 2px solid;  
     box-sizing: border-box;
     cursor: pointer; 
-    margin-left: 10px;
-    margin-right: 10px; 
     box-shadow: 3px 6px #888888;
     background: green;
   }

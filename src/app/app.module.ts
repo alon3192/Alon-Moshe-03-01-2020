@@ -14,6 +14,7 @@ import { LocationToastComponent } from './location-toast/location-toast.componen
 import { ErrorToastComponent } from './error-toast/error-toast.component';
 import { FavoriteCardComponent } from './favorite-card/favorite-card.component';
 import { SkyComponent } from './sky/sky.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SkyComponent } from './sky/sky.component';
     LocationToastComponent,
     ErrorToastComponent,
     FavoriteCardComponent,
-    SkyComponent
+    SkyComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
