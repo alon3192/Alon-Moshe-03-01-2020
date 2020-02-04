@@ -122,13 +122,14 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   }
 
  setBackgroundImage() {
-    if(this.weatherText.toLowerCase().includes("snow")) {
+    if(this.weatherText.toLowerCase().includes("snow") || this.weatherText.toLowerCase().includes("flurries")) {
       this.backgroundImage = "../../assets/images/snow-image.jpg";
     }
-    else if(this.weatherText.toLowerCase().includes("rain")) {
+    else if(this.weatherText.toLowerCase().includes("rain") || this.weatherText.toLowerCase().includes("shower") || this.weatherText.toLowerCase().includes("drizzle")) {
       this.backgroundImage = "../../assets/images/rain-image.jpg";
     }
-    else if(this.weatherText.toLowerCase().includes("cloud") || this.weatherText.toLowerCase().includes("dreary")) {
+    else if(this.weatherText.toLowerCase().includes("cloud") || this.weatherText.toLowerCase().includes("dreary") || this.weatherText.toLowerCase().includes("overcast"))
+     {
       this.backgroundImage = "../../assets/images/cloudy-image.jpg";
     }
     else if(this.weatherText.toLowerCase().includes("sun") || this.weatherText.toLowerCase().includes("clear")) {
@@ -143,9 +144,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
     else if(this.weatherText.toLowerCase().includes("mist") || this.weatherText.toLowerCase().includes("hazy") || this.weatherText.toLowerCase().includes("foggy")) {
       this.backgroundImage = "../../assets/images/mist-image.jpg";
     }
-    else {
-      console.log("8")
-    }
+    
     
   }
 

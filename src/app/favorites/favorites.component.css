@@ -4,6 +4,7 @@
     padding-left: 10%;
     padding-right: 10%;
     justify-content: space-evenly;
+    min-height: calc(100vh - 60px - 200px - 45px);
 }
 
 

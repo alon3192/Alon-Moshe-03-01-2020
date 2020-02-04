@@ -22,7 +22,7 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "Ag73Q14AjXuBqEkgGgHE6DKPpzINe3Wo";
+  myKey = "eiBty1oF3dYrjW5casX2lETjnFmPni57";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
@@ -194,11 +194,11 @@ export class DataService {
       imageLink = "../../assets/images/cloud_sun.png";
     }
 
-    else if(dailyForecast.includes("shower") || dailyForecast.includes("rain")) {
+    else if(dailyForecast.includes("shower") || dailyForecast.includes("rain")  || dailyForecast.includes("drizzle")) {
       imageLink = "../../assets/images/rain.png";
     }
 
-    else if(dailyForecast.toLowerCase().includes("cloud")) {
+    else if(dailyForecast.toLowerCase().includes("cloud") || dailyForecast.toLowerCase().includes("overcast")) {
       imageLink = "../../assets/images/cloudy.png";
     }
 
