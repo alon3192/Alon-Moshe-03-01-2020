@@ -22,7 +22,7 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "VG0sj1PLLzAAkobsbp3GmwFGhmzJy0Sn";
+  myKey = "Ag73Q14AjXuBqEkgGgHE6DKPpzINe3Wo";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
@@ -173,35 +173,62 @@ export class DataService {
     this.displayToastEmitter.next(mode);
   }
 
-  pickImage(dailyForecast)  /*Get a link to the image according to the weather text*/
+  pickImage(dailyForecast:string, temperatureC:number)  /*Get a link to the image according to the weather text*/
   {
     let imageLink;
-    if(dailyForecast.includes("Snow".toLowerCase()) || dailyForecast.includes("Flurries".toLowerCase())) {
+    if(dailyForecast.includes("snow") || dailyForecast.includes("flurries")) {
       imageLink = "../../assets/images/snowing.png";
-        }
-      else if(dailyForecast.includes("Shower".toLowerCase()) || dailyForecast.includes("Rain".toLowerCase())) {
-        imageLink = "../../assets/images/rain.png";
-      }
+    }
 
-      else if(dailyForecast.toLowerCase().includes("Cloud".toLowerCase())) {
-        imageLink = "../../assets/images/cloudy.png";
-      }
+    else if((dailyForecast.includes("shower") || dailyForecast.includes("rain") || dailyForecast.includes("storm"))
+      && dailyForecast.includes("sun")) {
+      imageLink = "../../assets/images/sunny_rain.png";
+    }
 
-      else if(dailyForecast.toLowerCase().includes("Sunny".toLowerCase()) || dailyForecast.includes("Clear".toLowerCase())) {
-          imageLink = "../../assets/images/sunny.png";
-      }
-       
-      else if(dailyForecast.includes("Thunderstorm".toLowerCase())) {
-          imageLink = "../../assets/images/thunderstorm.png";
-      }
-      else if(dailyForecast.toLowerCase().includes("Mist".toLowerCase()) || dailyForecast.toLowerCase().includes
-      ("Fog".toLowerCase()) || dailyForecast.toLowerCase().includes("Hazy".toLowerCase())) {
-          imageLink = "../../assets/images/mist.png";
+    else if(dailyForecast.includes("hazy sunshine")) {
+      imageLink = "../../assets/images/hazy_sunshine.png";
+    }
+
+    else if((dailyForecast.includes("cloud") && dailyForecast.includes("sun"))
+     || dailyForecast.includes("partly sunny")) {
+      imageLink = "../../assets/images/cloud_sun.png";
+    }
+
+    else if(dailyForecast.includes("shower") || dailyForecast.includes("rain")) {
+      imageLink = "../../assets/images/rain.png";
+    }
+
+    else if(dailyForecast.toLowerCase().includes("cloud")) {
+      imageLink = "../../assets/images/cloudy.png";
+    }
+
+    else if(dailyForecast.toLowerCase().includes("sun") || dailyForecast.includes("clear")) {
+     
+      if(temperatureC <= 0) {
+        imageLink = "../../assets/images/sunny_snow.png";
       }
       else {
-        imageLink = "../../assets/images/default.png";
-      } 
-      return imageLink; 
+        imageLink = "../../assets/images/sunny.png";
+      }
+    }
+       
+    else if(dailyForecast.includes("thunderstorm")) {
+        imageLink = "../../assets/images/thunderstorm.png";
+    }
+
+    else if(dailyForecast.toLowerCase().includes("mist") || dailyForecast.toLowerCase().includes
+    ("fog") || dailyForecast.toLowerCase().includes("hazy")) {
+      imageLink = "../../assets/images/mist.png";
+    }
+    else if(dailyForecast.includes("dreary")) {
+      imageLink = "../../assets/images/wind.png";
   }
+
+    else {
+      imageLink = "../../assets/images/default.png";
+    } 
+    return imageLink; 
+  }
+  
 }
 

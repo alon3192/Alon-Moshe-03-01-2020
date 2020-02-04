@@ -38,8 +38,7 @@ export class DailyForecastComponent implements OnInit, OnDestroy {
     
     this.degF = this.getFarenheit(+this.dailyForecast.maximumDeg, +this.dailyForecast.minimumDeg);
     this.degC = this.getCelsius(this.degF);
-    this.imageLink = this.dataService.pickImage(this.dailyForecast.iconPhrase.toLowerCase())
-
+    this.imageLink = this.dataService.pickImage(this.dailyForecast.iconPhrase.toLowerCase(), +this.degC)
   }
 
   getFarenheit(max:number, min:number)

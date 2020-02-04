@@ -107,8 +107,7 @@
     z-index: -1;
     opacity: 0.2;
     background-repeat: no-repeat;
-    background-size: cover;
-    
+    background-size: cover;  
 }
 
 @media(max-width : 740px) {

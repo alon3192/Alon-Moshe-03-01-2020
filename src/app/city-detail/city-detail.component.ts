@@ -58,7 +58,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
           this.cityObject = city;
           this.temperatureC = city[0].Temperature.Metric.Value;
           this.weatherText = city[0].WeatherText;
-          this.imageLink = this.dataService.pickImage(this.weatherText.toLowerCase())
+          this.imageLink = this.dataService.pickImage(this.weatherText.toLowerCase(), +this.temperatureC);
           this.temperatureF = +(this.getFarenheit(this.temperatureC));  /*Convert to Ferenheit*/ 
           this.setBackgroundImage();
           this.card = document.getElementById("div_flex");
@@ -122,26 +122,29 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   }
 
  setBackgroundImage() {
-    if(this.imageLink.includes("snow")) {
+    if(this.weatherText.toLowerCase().includes("snow")) {
       this.backgroundImage = "../../assets/images/snow-image.jpg";
     }
-    else if(this.imageLink.includes("rain")) {
+    else if(this.weatherText.toLowerCase().includes("rain")) {
       this.backgroundImage = "../../assets/images/rain-image.jpg";
     }
-    else if(this.imageLink.includes("cloudy")) {
+    else if(this.weatherText.toLowerCase().includes("cloud") || this.weatherText.toLowerCase().includes("dreary")) {
       this.backgroundImage = "../../assets/images/cloudy-image.jpg";
     }
-    else if(this.imageLink.includes("sunny") || this.imageLink.includes("clear")) {
+    else if(this.weatherText.toLowerCase().includes("sun") || this.weatherText.toLowerCase().includes("clear")) {
       this.backgroundImage = "../../assets/images/sunny-image.jpg";
     }
-    else if(this.imageLink.includes("mostly_sunny")) {
+    else if(this.weatherText.toLowerCase().includes("mostly_sunny")) {
       this.backgroundImage = "../../assets/images/mostly-sunny-image.jpg";
     }
-    else if(this.imageLink.includes("thunderstorm")) {
+    else if(this.weatherText.toLowerCase().includes("thunderstorm")) {
       this.backgroundImage = "../../assets/images/thunderstorm-image.jpg";
     }
-    else if(this.imageLink.includes("mist") || this.imageLink.includes("hazy") || this.imageLink.includes("foggy")) {
+    else if(this.weatherText.toLowerCase().includes("mist") || this.weatherText.toLowerCase().includes("hazy") || this.weatherText.toLowerCase().includes("foggy")) {
       this.backgroundImage = "../../assets/images/mist-image.jpg";
+    }
+    else {
+      console.log("8")
     }
     
   }
