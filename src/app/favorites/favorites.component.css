@@ -10,7 +10,7 @@
 }
 
 h1 {
-  top: 45%;
+  top: 40%;
   position: absolute; 
 }
 
@@ -21,6 +21,10 @@ h1 {
       min-height: calc(100vh - 60px - 150px - 75px);      
       padding-left: 3%;
       padding-right: 3%;
+    }
+    h1 {
+      top: 0;
+      position: relative; 
     }
 }
 
