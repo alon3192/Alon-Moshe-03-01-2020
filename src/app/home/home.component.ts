@@ -143,6 +143,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.displayResults = false;
     this.tmpCities = this.cities.filter(city => city.EnglishName.toUpperCase().includes(this.cityName.toUpperCase()));
     document.getElementsByTagName('input')[0].style.background = "rgb(189, 255, 189)";
+    this.searchClicked();
   }
 
   searchClicked() /*Activated when the user presses the search button*/
