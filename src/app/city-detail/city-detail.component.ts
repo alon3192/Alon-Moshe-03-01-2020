@@ -67,9 +67,6 @@ export class CityDetailComponent implements OnInit, OnDestroy {
             document.getElementById("responsive_weather_text").classList.add("card_animation");
             document.getElementById("weather_text").classList.add("card_animation");
           
-          
-          
-          
           setTimeout(()=>{    
             this.card.classList.remove("card_animation");
             document.getElementById("responsive_weather_text").classList.remove("card_animation");

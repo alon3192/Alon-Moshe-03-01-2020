@@ -10,12 +10,12 @@ export class FavoritesComponent implements OnInit {
 
   constructor(private dataService:DataService) { }
 
-  favirites;
+  favorites = [];
 
   ngOnInit() {
 
     this.dataService.linkPressed("favorites");  /* Favorites page indicator */
-    this.favirites = this.dataService.favorites;
+    this.favorites = this.dataService.favorites;
    
   }
 

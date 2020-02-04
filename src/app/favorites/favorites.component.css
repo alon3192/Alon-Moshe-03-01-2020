@@ -5,8 +5,13 @@
     padding-right: 10%;
     justify-content: space-evenly;
     min-height: calc(100vh - 60px - 200px - 45px);
+    position: relative;
 }
 
+h1 {
+  top: 45%;
+  position: absolute;
+}
 
 
 @media(max-width : 625px) {
