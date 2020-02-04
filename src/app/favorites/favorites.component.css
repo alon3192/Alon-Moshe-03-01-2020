@@ -6,16 +6,21 @@
     justify-content: space-evenly;
     min-height: calc(100vh - 60px - 200px - 45px);
     position: relative;
+    text-align: center;
 }
 
 h1 {
   top: 45%;
-  position: absolute;
+  position: absolute; 
 }
 
 
-@media(max-width : 625px) {
+@media(max-width : 600px) {
     .favorites {
-      flex-direction: column;      
+      flex-direction: column;   
+      min-height: calc(100vh - 60px - 150px - 75px);      
+      padding-left: 3%;
+      padding-right: 3%;
     }
 }
+
