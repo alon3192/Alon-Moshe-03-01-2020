@@ -22,7 +22,7 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "IUNnFg9TO790GpOx1HwgouWhtYqP5318";
+  myKey = "tP64G9FTBmhFxWuUPUrDBmfwq21XMv8a";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
@@ -109,7 +109,7 @@ export class DataService {
         const longitude = position.coords.longitude;
 
           http.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=' + key +'&q=' + latitude + '%2C' + longitude)
-            .subscribe(city => {            
+            .subscribe(city => {          
               currentLocationEmitter.next(city)
           }, error => {
             /*console.log("3")*/
@@ -176,7 +176,7 @@ export class DataService {
   pickImage(dailyForecast:string, temperatureC:number)  /*Get a link to the image according to the weather text*/
   {
     let imageLink;
-    if(dailyForecast.includes("snow") || dailyForecast.includes("flurries")) {
+    if(dailyForecast.includes("snow") || dailyForecast.includes("flurries") || dailyForecast.includes("sleet")) {
       imageLink = "../../assets/images/snowing.png";
     }
 

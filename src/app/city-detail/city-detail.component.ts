@@ -119,7 +119,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   }
 
  setBackgroundImage() {
-    if(this.weatherText.toLowerCase().includes("snow") || this.weatherText.toLowerCase().includes("flurries")) {
+    if(this.weatherText.toLowerCase().includes("snow") || this.weatherText.toLowerCase().includes("flurries") || this.weatherText.toLowerCase().includes("Sleet")) {
       this.backgroundImage = "../../assets/images/snow-image.jpg";
     }
     else if(this.weatherText.toLowerCase().includes("rain") || this.weatherText.toLowerCase().includes("shower") || this.weatherText.toLowerCase().includes("drizzle")) {
