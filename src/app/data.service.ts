@@ -44,7 +44,6 @@ export class DataService {
   {
     this.http.get('http://dataservice.accuweather.com/locations/v1/topcities/150?apikey=' + this.myKey)
     .subscribe(cities => {
-      console.log(cities)
       this.citiesData = cities;
        this.citiesEmmiter.next(this.citiesData);
     }, error => {
@@ -59,9 +58,6 @@ export class DataService {
 
   getCurrentWeather(key:string)
   {
-    if(key!=="101924") {
-
-    
       this.http.get('http://dataservice.accuweather.com/currentconditions/v1/' + key + '?apikey=' + this.myKey)
       .subscribe(city => {
         if(city) {
@@ -75,7 +71,6 @@ export class DataService {
         this.locationDecisionEmmiter.next(true);
         this.imageErrorEmmiter.next("../../assets/images/error.png");
       })
-    } 
   }
 
   
@@ -132,10 +127,12 @@ export class DataService {
 
         function error() {
           currentLocationEmitter.next( {Key: 215854, EnglishName: "Tel Aviv"});
+          locationDecisionEmmiter.next(true);
       }
       /*In the case of a location permission failure or deny, the information about Tel Aviv is transmitted*/
       if (!navigator.geolocation) {
         currentLocationEmitter.next( {Key: 215854, EnglishName: "Tel Aviv"});
+        locationDecisionEmmiter.next(true);
       } else {
         navigator.geolocation.getCurrentPosition(success, error);
       }

@@ -34,13 +34,11 @@ export class HomeComponent implements OnInit, OnDestroy {
           city => {
             if(typeof(city) === 'string') {
               this.errorString = city;
-              this.locationDecision = true; 
             }
             else {
               this.cityKey = city.Key;
               this.cityNameToSend = city.EnglishName;
-              this.dataService.isFavorite(this.cityNameToSend);
-              this.locationDecision = true;                                  
+              this.dataService.isFavorite(this.cityNameToSend);                                
               this.dataService.getCurrentWeather(this.cityKey);
               this.dataService.getDailyForecasts(this.cityKey);
             }  
@@ -94,10 +92,9 @@ export class HomeComponent implements OnInit, OnDestroy {
           decision => {
             this.locationDecision = decision;
           }
-        ) 
-      this.dataService.getCities(); 
-    
-      this.dataService.getLocationKey();
+        )
+      this.dataService.getLocationKey();  
+      this.dataService.getCities();
       this.dataService.linkPressed("home");   /* Home page indicator*/ 
 
       this.cityNameToSend = this.route.snapshot.queryParams['cityName'];   /*Data from favorites page*/ 
