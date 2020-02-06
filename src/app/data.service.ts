@@ -22,7 +22,7 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "yCjHhAYIkrI8MnSCyD4OrKbOWFKJJWBU";
+  myKey = "P6FKTlMLApN6GStKIS7V7SZYB1Nu0cMy";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
@@ -201,7 +201,7 @@ export class DataService {
       imageLink = "../../assets/images/cloud_sun.png";
     }
 
-    else if(dailyForecast.includes("shower") || dailyForecast.includes("rain")  || dailyForecast.includes("drizzle")) {
+    else if(dailyForecast.includes("shower") || dailyForecast.includes("rain") || dailyForecast.includes("drizzle")) {
       imageLink = "../../assets/images/rain.png";
     }
 
@@ -209,7 +209,7 @@ export class DataService {
       imageLink = "../../assets/images/cloudy.png";
     }
 
-    else if(dailyForecast.toLowerCase().includes("sun") || dailyForecast.includes("clear")) {
+    else if(dailyForecast.toLowerCase().includes("sun")) {
      
       if(temperatureC <= 0) {
         imageLink = "../../assets/images/sunny_snow.png";
@@ -222,17 +222,23 @@ export class DataService {
     else if(dailyForecast.includes("thunderstorm")) {
         imageLink = "../../assets/images/thunderstorm.png";
     }
+    else if (dailyForecast.includes("clear")) {
+        imageLink = "../../assets/images/clear.png"
+    }
 
     else if(dailyForecast.toLowerCase().includes("mist") || dailyForecast.toLowerCase().includes
     ("fog") || dailyForecast.toLowerCase().includes("hazy")) {
-      imageLink = "../../assets/images/mist.png";
+        imageLink = "../../assets/images/mist.png";
     }
     else if(dailyForecast.includes("dreary")) {
-      imageLink = "../../assets/images/wind.png";
-  }
+        imageLink = "../../assets/images/wind.png";
+    }
+    else if(dailyForecast.includes("cold")) {
+      imageLink = "../../assets/images/cold.png";
+    } 
 
     else {
-      imageLink = "../../assets/images/default.png";
+        imageLink = "../../assets/images/default.png";
     } 
     return imageLink; 
   }
