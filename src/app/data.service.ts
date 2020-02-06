@@ -49,7 +49,7 @@ export class DataService {
     }, error => {
       /*console.log("1")*/
       this.citiesEmmiter.next("API Error");
-      this.locationDecisionEmmiter.next(true);
+      /*this.locationDecisionEmmiter.next(true);*/
       this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
    
@@ -68,7 +68,7 @@ export class DataService {
       }, error => {
         /*console.log("2")*/
         this.setErrorString("API Error");
-        this.locationDecisionEmmiter.next(true);
+        /*this.locationDecisionEmmiter.next(true);*/
         this.imageErrorEmmiter.next("../../assets/images/error.png");
       })
   }
@@ -120,7 +120,7 @@ export class DataService {
           }, error => {
             /*console.log("3")*/
             currentLocationEmitter.next("API Error");
-            locationDecisionEmmiter.next(true);
+           /* locationDecisionEmmiter.next(true);*/
             imageErrorEmmiter.next("../../assets/images/error.png");
           })
       }
@@ -166,7 +166,7 @@ export class DataService {
     }, error => {
       /*console.log("4")*/
       this.fiveDailyForecasts.next("API Error");
-      this.locationDecisionEmmiter.next(true);
+     /* this.locationDecisionEmmiter.next(true);*/
       this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
   }
