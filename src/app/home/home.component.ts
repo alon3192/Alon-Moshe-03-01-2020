@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   cityKey=""  
   cityNameToSend;
   dailyForecasts:DailyForecast[] = [];  /*The relevant data to present the 5 days forcast*/ 
-  locationDecision:boolean = false;     /*Responsible for displaying a location premission message*/ 
+  locationDecision:boolean = true;     /*Responsible for displaying a location premission message*/ 
   errorString = null;
   
  

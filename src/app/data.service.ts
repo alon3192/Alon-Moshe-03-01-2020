@@ -102,6 +102,7 @@ export class DataService {
         const currentLocationEmitter = this.currentLocationEmitter;
         const locationDecisionEmmiter = this.locationDecisionEmmiter
         const imageErrorEmmiter = this.imageErrorEmmiter;
+        locationDecisionEmmiter.next(false);
         
             function success(position) {
         
@@ -111,6 +112,7 @@ export class DataService {
           http.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=' + key +'&q=' + latitude + '%2C' + longitude)
             .subscribe(city => {          
               currentLocationEmitter.next(city)
+              locationDecisionEmmiter.next(true);
           }, error => {
             /*console.log("3")*/
             currentLocationEmitter.next("API Error");
