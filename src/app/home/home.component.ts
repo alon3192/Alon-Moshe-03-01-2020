@@ -88,11 +88,11 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.errorString = str;
           }
         ) 
-        this.subscription = this.dataService.locationDecisionEmmiter.subscribe( 
+      /*  this.subscription = this.dataService.locationDecisionEmmiter.subscribe( 
           decision => {
             this.locationDecision = decision;
           }
-        )
+        )*/
       this.dataService.getLocationKey();  
       this.dataService.getCities();
       this.dataService.linkPressed("home");   /* Home page indicator*/ 
