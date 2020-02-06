@@ -18,6 +18,10 @@
     padding: 3px 15px;  
 }
 
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+
 .div_img {
     height: 30px;
     width: 30px;

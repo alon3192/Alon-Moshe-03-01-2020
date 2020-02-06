@@ -1,15 +1,20 @@
 
 <div class="home">
     <div class="div_input">
-        <input id="input" type="text" [(ngModel)]="cityName" placeholder="Type city" (input)="onChangeCityName()">
+        <input id="input" type="text" list="abc" [(ngModel)]="cityName" placeholder="Type city" (input)="onChangeCityName()" autocomplete="off" (change)="onSortChange($event)">
         <div class="div_img" (click)="searchClicked()">
             <img src="../../assets/images/search.png" alt="">
         </div>
     </div>
-    <div *ngIf="displayResults" class="results">
-        <div class="display_city_name" *ngFor="let cityName of tmpCities" (click)="cityChosed(cityName.EnglishName)">
-            {{cityName.EnglishName}}</div>
-    </div> 
+    <datalist *ngIf="displayResults" class="results" id="abc">
+        <div class="display_city_name" *ngFor="let cityName of tmpCities" (click)="cityChosed(cityName.EnglishName)"> 
+           <option 
+            [value]="cityName.EnglishName">
+            </option> 
+        </div>
+        
+    </datalist> 
+
 </div>
 <div class="cityDetails">
     <app-city-detail [key]="cityKey" [cityName]="cityNameToSend"></app-city-detail>

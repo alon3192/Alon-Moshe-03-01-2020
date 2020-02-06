@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   dailyForecasts:DailyForecast[] = [];  /*The relevant data to present the 5 days forcast*/ 
   locationDecision:boolean = false;     /*Responsible for displaying a location premission message*/ 
   errorString = null;
+  list = ["a", "b", "c", "d"];
   
  
   
@@ -113,6 +114,9 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.dataService.getDailyForecasts(this.cityKey);
         this.locationDecision = true;
       }
+
+    
+      
   }
 
   onChangeCityName()  /*Activated every input types*/
@@ -135,10 +139,20 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.displayResults = false;
       }
     }
+
+
+  
+
+    
   }
+
+  onSortChange(e) {
+    this.cityChosed(e.target.value);
+ }
 
   cityChosed(cityName:string)  /*Activated when the user clicks on the one of the options from the list*/
   {
+    console.log("dsa");
     this.cityName = cityName;
     this.displayResults = false;
     this.tmpCities = this.cities.filter(city => city.EnglishName.toUpperCase().includes(this.cityName.toUpperCase()));
