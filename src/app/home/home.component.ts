@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   cityKey=""  
   cityNameToSend;
   dailyForecasts:DailyForecast[] = [];  /*The relevant data to present the 5 days forcast*/ 
-  locationDecision:boolean = true;     /*Responsible for displaying a location premission message*/ 
+  locationDecision:boolean = false;     /*Responsible for displaying a location premission message*/ 
   errorString = null;
   
  
@@ -143,7 +143,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSortChange(e) {
-    this.cityChosed(e.target.value);
+   /* this.cityChosed(e.target.value);*/
  }
 
   cityChosed(cityName:string)  /*Activated when the user clicks on the one of the options from the list*/
