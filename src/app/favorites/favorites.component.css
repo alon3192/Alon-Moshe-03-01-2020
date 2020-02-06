@@ -18,7 +18,7 @@ h1 {
 @media(max-width : 600px) {
     .favorites {
       flex-direction: column;   
-      min-height: calc(100vh - 60px - 150px - 75px);      
+      min-height: calc(100vh - 60px - 150px - 75px);
       padding-left: 3%;
       padding-right: 3%;
     }

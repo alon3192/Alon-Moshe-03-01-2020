@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit, OnDestroy {
               this.locationDecision = true; 
             }
             else {
-              this.locationDecision = true;
               this.cityKey = city.Key;
               this.cityNameToSend = city.EnglishName;
               this.dataService.isFavorite(this.cityNameToSend);

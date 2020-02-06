@@ -1,27 +1,27 @@
+<div class="home_body">
+    <div class="home">
+        <div class="div_input">
+            <input id="input" type="text" list="abc" [(ngModel)]="cityName" placeholder="Type city" (input)="onChangeCityName()" autocomplete="off" (change)="onSortChange($event)">
+            <div class="div_img" (click)="searchClicked()">
+                <img src="../../assets/images/search.png" alt="">
+            </div>
+        </div>
+        <datalist *ngIf="displayResults" class="results" id="abc">
+            <div class="display_city_name" *ngFor="let cityName of tmpCities" (click)="cityChosed(cityName.EnglishName)"> 
+            <option 
+                [value]="cityName.EnglishName">
+                </option> 
+            </div> 
+        </datalist> 
 
-<div class="home">
-    <div class="div_input">
-        <input id="input" type="text" list="abc" [(ngModel)]="cityName" placeholder="Type city" (input)="onChangeCityName()" autocomplete="off" (change)="onSortChange($event)">
-        <div class="div_img" (click)="searchClicked()">
-            <img src="../../assets/images/search.png" alt="">
+    </div>
+    <div class="cityDetails">
+        <app-city-detail [key]="cityKey" [cityName]="cityNameToSend"></app-city-detail>
+
+        <div id="daily_forecasts" class="daily_forecasts">
+            <app-daily-forecast *ngFor="let day of dailyForecasts" [dailyForecast]="day"></app-daily-forecast>  
         </div>
     </div>
-    <datalist *ngIf="displayResults" class="results" id="abc">
-        <div class="display_city_name" *ngFor="let cityName of tmpCities" (click)="cityChosed(cityName.EnglishName)"> 
-           <option 
-            [value]="cityName.EnglishName">
-            </option> 
-        </div> 
-    </datalist> 
-
 </div>
-<div class="cityDetails">
-    <app-city-detail [key]="cityKey" [cityName]="cityNameToSend"></app-city-detail>
-
-    <div id="daily_forecasts" class="daily_forecasts">
-        <app-daily-forecast *ngFor="let day of dailyForecasts" [dailyForecast]="day"></app-daily-forecast>  
-    </div>
-</div>
-
 <app-location-toast *ngIf="!locationDecision"></app-location-toast>
 <app-error-toast [message]="errorString" *ngIf="errorString !== null"></app-error-toast>

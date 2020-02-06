@@ -1,3 +1,7 @@
+.home_body {
+    min-height: calc(100vh - 60px - 200px - 45px);
+}
+
 .home {
     margin-top: 15px;
     text-align: center;
@@ -92,5 +96,10 @@ input::-webkit-calendar-picker-indicator {
     }
     .results {
         max-height: 220px;
+    }
+}
+@media(max-width : 600px) {
+    .home_body {
+        min-height: calc(100vh - 60px - 150px - 75px);
     }
 }
