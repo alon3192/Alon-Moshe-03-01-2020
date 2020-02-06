@@ -134,16 +134,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         document.getElementsByTagName('input')[0].style.background = "rgb(189, 255, 189)";
         this.displayResults = false;
       }
-    }
-
-
-  
-
-    
+    } 
   }
 
   onSortChange(e) {
-   /* this.cityChosed(e.target.value);*/
+    this.cityChosed(e.target.value);
  }
 
   cityChosed(cityName:string)  /*Activated when the user clicks on the one of the options from the list*/

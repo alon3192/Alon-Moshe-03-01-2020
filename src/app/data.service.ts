@@ -44,6 +44,7 @@ export class DataService {
   {
     this.http.get('http://dataservice.accuweather.com/locations/v1/topcities/150?apikey=' + this.myKey)
     .subscribe(cities => {
+      console.log(cities)
       this.citiesData = cities;
        this.citiesEmmiter.next(this.citiesData);
     }, error => {
@@ -58,15 +59,23 @@ export class DataService {
 
   getCurrentWeather(key:string)
   {
-     this.http.get('http://dataservice.accuweather.com/currentconditions/v1/' + key + '?apikey=' + this.myKey)
-    .subscribe(city => {
-      this.cityDetailsEmitter.next(city); 
-    }, error => {
-      /*console.log("2")*/
-      this.setErrorString("API Error");
-      this.locationDecisionEmmiter.next(true);
-      this.imageErrorEmmiter.next("../../assets/images/error.png");
-    })
+    if(key!=="101924") {
+
+    
+      this.http.get('http://dataservice.accuweather.com/currentconditions/v1/' + key + '?apikey=' + this.myKey)
+      .subscribe(city => {
+        if(city) {
+
+          this.cityDetailsEmitter.next(city); 
+        }
+        
+      }, error => {
+        /*console.log("2")*/
+        this.setErrorString("API Error");
+        this.locationDecisionEmmiter.next(true);
+        this.imageErrorEmmiter.next("../../assets/images/error.png");
+      })
+    } 
   }
 
   
