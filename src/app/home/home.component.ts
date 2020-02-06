@@ -23,11 +23,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   dailyForecasts:DailyForecast[] = [];  /*The relevant data to present the 5 days forcast*/ 
   locationDecision:boolean = false;     /*Responsible for displaying a location premission message*/ 
   errorString = null;
-  list = ["a", "b", "c", "d"];
   
  
-  
-
   constructor(private dataService:DataService, private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -152,7 +149,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   cityChosed(cityName:string)  /*Activated when the user clicks on the one of the options from the list*/
   {
-    console.log("dsa");
     this.cityName = cityName;
     this.displayResults = false;
     this.tmpCities = this.cities.filter(city => city.EnglishName.toUpperCase().includes(this.cityName.toUpperCase()));

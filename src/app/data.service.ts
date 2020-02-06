@@ -64,7 +64,7 @@ export class DataService {
     }, error => {
       /*console.log("2")*/
       this.setErrorString("API Error");
-      this.locationDecisionEmmiter.next(true);
+     /* this.locationDecisionEmmiter.next(true);*/
       this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
   }
