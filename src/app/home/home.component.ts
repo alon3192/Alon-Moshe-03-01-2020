@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.locationDecision = decision;
           }
         )
-      /*this.dataService.getLocationKey();  */
+      this.dataService.getLocationKey();  
       this.dataService.getCities();
       this.dataService.linkPressed("home");   /* Home page indicator*/ 
 
