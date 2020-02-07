@@ -22,7 +22,7 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "2vOZiG7eD6GhNbKpHS62AqQKF11akXwf";
+  myKey = "seb2qJHWqDyos2CPKH0XAfe8hmAJ8OnT";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
