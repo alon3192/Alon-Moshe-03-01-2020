@@ -22,7 +22,7 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "jEGlVrfKGpJ8aWkm8xNg4NybFfouSzvO";
+  myKey = "0IroAkuldr6PJVdCmUjvDgX7RGzzNSmV";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
@@ -33,7 +33,23 @@ export class DataService {
   
   setErrorString(str:string) {
     this.errorStringEmitter.next(str);
-  }  
+  } 
+  
+  setLocationDecision()
+  {
+   const locationDecisionEmmiter = this.locationDecisionEmmiter
+    navigator.permissions.query({name:'geolocation'}).then((result) => {
+      
+      // Will return ['granted', 'prompt', 'denied']
+      if(result.state === "prompt") {
+        
+       locationDecisionEmmiter.next(false);
+      }
+      else {
+        locationDecisionEmmiter.next(true);
+      }
+    });
+  }
 
   linkPressed(link:string)
   {
@@ -49,7 +65,6 @@ export class DataService {
     }, error => {
       /*console.log("1")*/
       this.citiesEmmiter.next("API Error");
-      this.locationDecisionEmmiter.next(true);
       this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
    
@@ -60,14 +75,12 @@ export class DataService {
   {
       this.http.get('http://dataservice.accuweather.com/currentconditions/v1/' + key + '?apikey=' + this.myKey)
       .subscribe(city => {
-        console.log(city)
           this.cityDetailsEmitter.next(city); 
         
         
       }, error => {
         /*console.log("2")*/
         this.setErrorString("API Error");
-        this.locationDecisionEmmiter.next(true);
         this.imageErrorEmmiter.next("../../assets/images/error.png");
       })
   }
@@ -105,7 +118,6 @@ export class DataService {
         const currentLocationEmitter = this.currentLocationEmitter;
         const locationDecisionEmmiter = this.locationDecisionEmmiter
         const imageErrorEmmiter = this.imageErrorEmmiter;
-        locationDecisionEmmiter.next(false);
         
             function success(position) {
         
@@ -114,7 +126,7 @@ export class DataService {
 
           http.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=' + key +'&q=' + latitude + '%2C' + longitude)
             .subscribe(city => {          
-              currentLocationEmitter.next(city)
+              currentLocationEmitter.next(city);
               locationDecisionEmmiter.next(true);
           }, error => {
             /*console.log("3")*/
@@ -165,7 +177,6 @@ export class DataService {
     }, error => {
       /*console.log("4")*/
       this.fiveDailyForecasts.next("API Error");
-      this.locationDecisionEmmiter.next(true);
       this.imageErrorEmmiter.next("../../assets/images/error.png");
     })
   }

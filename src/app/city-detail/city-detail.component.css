@@ -157,6 +157,9 @@
         margin-top: 7px;
         font-size: 30px;
     }
+    .fav_btn::before {
+        background: none;
+    }
 }
 
 @keyframes increase_size {

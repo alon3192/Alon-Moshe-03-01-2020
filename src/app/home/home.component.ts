@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             }
             else {
               this.cityKey = city.Key;
-              console.log(this.cityKey)
               this.cityNameToSend = city.EnglishName;
               this.dataService.isFavorite(this.cityNameToSend);                                
               this.dataService.getCurrentWeather(this.cityKey);
@@ -94,6 +93,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.locationDecision = decision;
           }
         )
+      this.dataService.setLocationDecision();
       this.dataService.getLocationKey();  
       this.dataService.getCities();
       this.dataService.linkPressed("home");   /* Home page indicator*/ 
@@ -106,8 +106,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.dataService.isFavorite(this.cityNameToSend);
         this.dataService.getCurrentWeather(this.cityKey);
         this.dataService.getDailyForecasts(this.cityKey);
-        this.locationDecision = true;
-      }  
+        /*this.locationDecision = true;*/
+      } 
+      
+      
   }
 
   onChangeCityName()  /*Activated every input types*/
