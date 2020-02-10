@@ -22,7 +22,7 @@ export class DataService {
   currentLocationEmitter = new Subject<any>()
   displayToastEmitter  = new Subject<boolean>()
   cMode = true; 
-  myKey = "qAVcwqKY5N6si89Z4f8Tdf3duH5BAPol";
+  myKey = "e8KL1mel3GR0HLFUH51GKgdlmNVFsYWd";
   
   updateFavoriteListEmitter = new Subject<any>()
   fromFavorites:boolean = false;
@@ -76,8 +76,6 @@ export class DataService {
       this.http.get('http://dataservice.accuweather.com/currentconditions/v1/' + key + '?apikey=' + this.myKey)
       .subscribe(city => {
           this.cityDetailsEmitter.next(city); 
-        
-        
       }, error => {
         /*console.log("2")*/
         this.setErrorString("API Error");
@@ -125,7 +123,7 @@ export class DataService {
         const longitude = position.coords.longitude;
 
           http.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=' + key +'&q=' + latitude + '%2C' + longitude)
-            .subscribe(city => {          
+            .subscribe(city => {       
               currentLocationEmitter.next(city);
               locationDecisionEmmiter.next(true);
           }, error => {
@@ -241,7 +239,8 @@ export class DataService {
     ("fog") || dailyForecast.toLowerCase().includes("hazy")) {
         imageLink = "../../assets/images/mist.png";
     }
-    else if(dailyForecast.includes("dreary")) {
+    else if(dailyForecast.includes("dreary")  || dailyForecast.toLowerCase().includes
+    ("wind")) {
         imageLink = "../../assets/images/wind.png";
     }
     else if(dailyForecast.includes("cold")) {
