@@ -138,7 +138,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
     else if(this.weatherText.toLowerCase().includes("thunderstorm")) {
       this.backgroundImage = "../../assets/images/thunderstorm-image.jpg";
     }
-    else if(this.weatherText.toLowerCase().includes("mist") || this.weatherText.toLowerCase().includes("hazy") || this.weatherText.toLowerCase().includes("foggy")) {
+    else if(this.weatherText.toLowerCase().includes("mist") || this.weatherText.toLowerCase().includes("haz") || this.weatherText.toLowerCase().includes("fog")) {
       this.backgroundImage = "../../assets/images/mist-image.jpg";
     }
     
