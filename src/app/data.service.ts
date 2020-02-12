@@ -236,7 +236,7 @@ export class DataService {
     }
 
     else if(dailyForecast.toLowerCase().includes("mist") || dailyForecast.toLowerCase().includes
-    ("fog") || dailyForecast.toLowerCase().includes("hazy")) {
+    ("fog") || dailyForecast.toLowerCase().includes("haz")) {
         imageLink = "../../assets/images/mist.png";
     }
     else if(dailyForecast.includes("dreary")  || dailyForecast.toLowerCase().includes
